@@ -1,0 +1,19 @@
+#specify docker version
+version: '3'
+
+#specify docker containers/services
+services:
+  redis-server:
+    image: 'redis'
+  
+  #for the node-app, we are going to use
+  #the Dockerfile to build the container
+  node-app:
+    #define restart policy in case of crash
+    restart: always
+    build: .
+    #specify ports
+    #- is for array
+    #specify the local machine port to container port
+    ports:
+      - "4001:8081"
